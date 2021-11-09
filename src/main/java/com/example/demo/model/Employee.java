@@ -21,6 +21,19 @@ public class Employee implements Serializable {
     @Column(name = "name")
     private String name;
 
+      public Employee(){}
+
+    public Employee(Long empId, String name) {
+        this.empId = empId;
+        this.name = name;
+    }
+
+    public Employee(Long empId, Set<LeaveApplication> leaveApplication, String name) {
+        this.empId = empId;
+        this.leaveApplication = leaveApplication;
+        this.name = name;
+    }
+
     public Long getEmpId() {
         return empId;
     }

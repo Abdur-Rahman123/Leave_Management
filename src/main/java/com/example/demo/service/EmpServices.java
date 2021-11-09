@@ -3,6 +3,9 @@ package com.example.demo.service;
 import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.model.Employee;
 import com.example.demo.repo.EmpRepo;
+import net.bytebuddy.TypeCache;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +21,8 @@ private final EmpRepo empRepo;
     public Employee findEmployeeById(Long id){
         return empRepo.findById(id).orElseThrow(()->new UserNotFoundException("user by id "+id+"not found"));
     }
-    public List<Employee> findAllEmployee(){
-        return empRepo.findAll();
+
+    public List<Object[]> findAllEmployee(){
+        return empRepo.AllUser();
     }
 }
